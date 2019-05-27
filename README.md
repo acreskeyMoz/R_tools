@@ -1,3 +1,3 @@
 # R_tools
 
-Testframework -> R tools
+Scripts to make it easier to consume browsertime (one day raptor) json in R
