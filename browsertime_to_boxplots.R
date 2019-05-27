@@ -1,44 +1,33 @@
+library(dplyr) 
+library(ggplot2) 
+
 library("rjson")
+library("rowr")
 
-setwd("/users/acreskey/tools/R/data/tsproxy/data")
+setwd("/users/acreskey/tools/R/data/rcwn")
 
-system('bash ./to_csv.sh')
+dir.create("plots")
+system('bash ./to_csv_headers.sh')
 
-folders <- list.dirs(full.names=FALSE, recursive = FALSE)
+folders <- list.dirs(path = "./data", full.names=FALSE, recursive = FALSE)
 
+df <- data.frame()
 for (folder in folders)
 {
-  thisPath <- paste("./", folder, sep="")
+  thisPath <- paste("./data/", folder, sep="")
   my_files <- list.files(path=thisPath, pattern=".csv$", recursive=TRUE)
-  
-  df <- data.frame()
   
   for(i in seq_along(my_files))
   {
-    print(my_files[i])
     thisFile = paste(thisPath, "/", my_files[i], sep="")
-    file <- read.csv(thisFile, header=FALSE,sep=",")
+    print(thisFile)
+    file <- read.csv(thisFile, header=TRUE,sep=",")
     csv_as_df <- as.data.frame(file)
-    name <-unlist(strsplit(my_files[i], "/"))
-    colnames(csv_as_df) <- name[length(name)-1]
-    if (nrow(df)==0)
-    {
-      df <- csv_as_df
-    }
-    else
-    {
-      df <- cbind(df, csv_as_df)
-    }
+    csv_as_df$url <- strtrim(csv_as_df$url, 40)
+    df <- rbind(df, csv_as_df)
   }
-  
-  #strip off https;//
-  graphname <- substring(folder, 9)
-
-  # plot to high resolution png
-  pngPath <- paste("../plots/", graphname, ".png", sep="")
-  png(file=pngPath, width=1200,height=1200)
-
-  y_label <- paste("loadtime ", graphname, sep="" )
-  boxplot(df, ylab=y_label)
-  dev.off()
 }
+
+ggplot(df, aes(x=url, y=loadtime)) +labs(title="baseline and rcwn off with 30Mbps 2ms rtt 'WIFI', Geckoview_example 05/24/2019, Moto G5", y = "loadtime, ms") + geom_boxplot(aes(fill=mode)) + theme(axis.text.x=element_text(angle=90, hjust=1))
+#ggplot(df, aes(x=url, y=loadtime)) +labs(title="", y = "loadtime ms") + geom_point(aes(color=mode)) + theme(axis.text.x=element_text(angle=90, hjust=1))
+#ggplot(df, aes(x=url, y=loadtime)) +labs(title="", y = "loadtime ms") + geom_violin(aes(fill=mode)) + theme(axis.text.x=element_text(angle=90, hjust=1))
