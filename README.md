@@ -6,6 +6,7 @@ browsertime.json -> csv -> R data frame -> plot to .png
 • Clone this repo
 
 • Copy your root `browsertime-results` into `experiment/data`
+  These scripts are looking for visual metrics (e.g. SpeedIndex, ContenfulSpeedIndex)
 
 • Open `plot_browsertime_visual_metrics.R` and modify this line
 
@@ -15,6 +16,11 @@ browsertime.json -> csv -> R data frame -> plot to .png
 
 • The generated graph will be in `experiment/data`
 
+
+e.g.
+![alt text](https://github.com/acreskeyMoz/R_tools/blob/master/output.png)
+
+Folder structure
 ```
 R_tools/
 ├── experiment
