@@ -32,7 +32,7 @@ The data flow is:
 
 • Run the R script (select all and then command-enter in RStudio for MacOS)
 
-• The generated graph will be in `experiment/data`
+• The generated graph will be in `experiment/plots`
 
 
 Folder structure after completion
