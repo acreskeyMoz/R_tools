@@ -1,12 +1,19 @@
 # R_tools: R plots from browsertime.json
 
+Just copy your `browsertime-results` folder over and run this script to generate a pretty graph.
+
+
 The data flow is:
 browsertime.json -> csv -> R data frame -> plot to .png
+
 
 • Clone this repo
 
 • Copy your root `browsertime-results` into `experiment/data`
-  These scripts are looking for visual metrics (e.g. SpeedIndex, ContenfulSpeedIndex)
+  
+    These scripts are looking for visual metrics (e.g. SpeedIndex, ContenfulSpeedIndex)
+    The name of the folder in which the browsertime.json resides is used as the 'mode'.
+    This is a variation (e.g. a browser, preference change, etc). See example folder structure below.
 
 • Open `plot_browsertime_visual_metrics.R` and modify this line
 
@@ -17,16 +24,32 @@ browsertime.json -> csv -> R data frame -> plot to .png
 • The generated graph will be in `experiment/data`
 
 
-e.g.
-![alt text](https://github.com/acreskeyMoz/R_tools/blob/master/output.png)
-
 Folder structure
 ```
 R_tools/
 ├── experiment
-│   ├── data (copy your root browsertime-results folder here)
-│   └── plots (generated .png will be here)
+│   ├── data
+│   │   └── browsertime-results
+│   │       ├── booking.com
+│   │       │   ├── chrome
+│   │       │   │   ├── browsertime.json
+│   │       │   │   └── out.csv
+│   │       │   └── gve
+│   │       │       ├── browsertime.json
+│   │       │       └── out.csv
+│   │       └── cnn.com
+│   │           ├── chrome
+│   │           │   ├── browsertime.json
+│   │           │   └── out.csv
+│   │           └── gve
+│   │               ├── browsertime.json
+│   │               └── out.csv
+│   └── plots
+│       └── output.png
 ├── plot_browsertime_visual_metrics.R
 ├── to_csv_headers.sh
 └── to_csv_visual_metrics.sh
 ```
+
+e.g.
+![alt text](https://github.com/acreskeyMoz/R_tools/blob/master/output.png)
