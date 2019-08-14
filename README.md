@@ -1,4 +1,4 @@
-# R_tools: R plots from browsertime.json
+R plots from browsertime.json
 
 Just copy your `browsertime-results` folder over and run this script to generate a pretty graph.
 
