@@ -1,30 +1,41 @@
-R plots from browsertime.json
+## R plots from browsertime.json
 
 Just copy your `browsertime-results` folder over and run this script to generate a pretty graph.
 
-
 The data flow is:
-browsertime.json -> csv -> R data frame -> plot to .png
+
+```browsertime.json -> csv -> R data frame -> plot to .png```
 
 
+### Setup
 • Clone this repo
 
 • Copy your root `browsertime-results` into `experiment/data`
   
     These scripts are looking for visual metrics (e.g. SpeedIndex, ContenfulSpeedIndex)
     The name of the folder in which the browsertime.json resides is used as the 'mode'.
-    This is a variation (e.g. a browser, preference change, etc). See example folder structure below.
+    This is a variation (e.g. a browser, preference change, etc). 
+  ```
+     ├── data
+     │   │   └── browsertime-results
+     │   │       ├── booking.com
+     │   │       │   ├── chrome
+     │   │       │   │   ├── browsertime.json
+     │   │       │   │   
+     │   │       │   └── gve
+     │   │       │       ├── browsertime.json
+```
 
 • Open `plot_browsertime_visual_metrics.R` and modify this line
 
-```setwd("/users/acreskey/tools/R_tools/experiment")``` to point to match your local configuration.
+```setwd("/users/acreskey/tools/R_tools/experiment")``` to match your local configuration.
 
 • Run the R script (select all and then command-enter in RStudio for MacOS)
 
 • The generated graph will be in `experiment/data`
 
 
-Folder structure
+Folder structure after completion
 ```
 R_tools/
 ├── experiment
