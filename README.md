@@ -16,7 +16,7 @@ One plots load time and the other plots visual metrics (SpeedIndex is the defaul
 • Copy your root `browsertime-results` into `experiment/data`
   
     The name of the folder in which the browsertime.json resides is used as the 'mode'.
-    This is a variation (e.g. a browser, preference change, etc). 
+    This is a test variation (e.g. a browser, preference change, etc). 
   ```
      ├── data
      │   │   └── browsertime-results
