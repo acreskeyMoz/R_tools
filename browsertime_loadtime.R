@@ -32,6 +32,8 @@ for (folder in folders)
   }
 }
 
+save(df, file = "data.RData")
+
 pngPath <- paste("./plots/", "output", ".png", sep="")
 png(file=pngPath, width = 12, height = 12, units = 'in', res = 300)
 
