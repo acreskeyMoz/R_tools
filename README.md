@@ -41,6 +41,9 @@ By default, the R script will transforms using visual metrics (e.g. SpeedIndex, 
 If those are not present, swap to this tranform script:
 https://github.com/acreskeyMoz/R_tools/blob/62132cc7440cd6008d97e5768ad9167ebc88baa9/plot_browsertime.R#L6-L11
 
+• Select the desired metric and graph type here:
+https://github.com/acreskeyMoz/R_tools/blob/62132cc7440cd6008d97e5768ad9167ebc88baa9/plot_browsertime.R#L44-L48
+
 • Run the R script (select all and then command-enter in RStudio for MacOS)
 
 • The generated graph will be in `/plots/output.png`
