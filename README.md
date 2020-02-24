@@ -18,8 +18,8 @@ The data flow is:
 
 • Clone this repo: ```git clone git@github.com:acreskeyMoz/R_tools.git```
 
-• Customize the working directory in `plot_browsertime.R` to match your local setup:
-https://github.com/acreskeyMoz/R_tools/blob/62132cc7440cd6008d97e5768ad9167ebc88baa9/plot_browsertime.R#L4
+• Open `plot_browsertime.R` in R or RStudio and customize the working directory to match your local environment:
+[plot_browsertime.R](https://github.com/acreskeyMoz/R_tools/blob/62132cc7440cd6008d97e5768ad9167ebc88baa9/plot_browsertime.R#L4)
 
 • Copy your root `browsertime-results` into `R_tools/data/`
 This script will read in the data from this folder
@@ -37,11 +37,11 @@ This script will read in the data from this folder
      │   │       │       ├── browsertime.json
 ```
 
-By default, the R script will transforms using visual metrics (e.g. SpeedIndex, ContenfulSpeedIndex).
+• By default, the R script will transforms using visual metrics (e.g. SpeedIndex, ContenfulSpeedIndex).
 If those are not present, swap to this tranform script:
 https://github.com/acreskeyMoz/R_tools/blob/62132cc7440cd6008d97e5768ad9167ebc88baa9/plot_browsertime.R#L6-L11
 
-• Select the desired metric and graph type here:
+• Uncomment the desired graph type and set the metric (y=...)
 https://github.com/acreskeyMoz/R_tools/blob/62132cc7440cd6008d97e5768ad9167ebc88baa9/plot_browsertime.R#L44-L48
 
 • Run the R script (select all and then command-enter in RStudio for MacOS)
@@ -51,4 +51,4 @@ https://github.com/acreskeyMoz/R_tools/blob/62132cc7440cd6008d97e5768ad9167ebc88
 •  A summary of the results is presented in the R log
 
 e.g.
-![alt text](https://github.com/acreskeyMoz/R_tools/blob/master/output.png)
+![alt text](https://github.com/acreskeyMoz/R_tools/blob/master/sample.png)
