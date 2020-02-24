@@ -1,19 +1,25 @@
 ## R plots from browsertime.json
 
-Just copy your `browsertime-results` folder over and run an R script to generate pretty graphs.
 
+Tool to import `browsertime.json` into R for the purpose of generating plots and summaries.
 The data flow is:
 
 ```browsertime.json -> csv -> R data frame -> plot to .png```
 
-There are two R scripts that can be used:
-One plots load time and the other plots visual metrics (SpeedIndex is the default but that can be changed)
-
 
 ### Setup
-• Clone this repo
 
-• Copy your root `browsertime-results` into `experiment/data`
+• Install R or RStudio
+
+• Install jq so that it is available in your shell
+
+• Clone this repo: ```git clone git@github.com:acreskeyMoz/R_tools.git```
+
+• Customize the working directory in `plot_browsertime_visual_metrics.R` to match your local path:
+https://github.com/acreskeyMoz/R_tools/blob/master/plot_browsertime_visual_metrics.R#L9
+
+• Copy your root `browsertime-results` into `R_tools/data/`
+This script will read in the data from this folder
   
     The name of the folder in which the browsertime.json resides is used as the 'mode'.
     This is a test variation (e.g. a browser, preference change, etc). 
@@ -28,20 +34,17 @@ One plots load time and the other plots visual metrics (SpeedIndex is the defaul
      │   │       │       ├── browsertime.json
 ```
 
-• If you want visual metrics, open `plot_browsertime_visual_metrics.R` and modify this line
+By default script will be looking for visual metrics (e.g. SpeedIndex, ContenfulSpeedIndex).
+If those are not present, swap to this tranform script:
 
-```setwd("/users/acreskey/tools/R_tools/experiment")``` to match your local configuration.
-This script will be looking for visual metrics (e.g. SpeedIndex, ContenfulSpeedIndex)
-
-• If you want just loadtime, open `browsertime_loadtime.R` and modify this line
-
-```setwd("/users/acreskey/tools/R_tools/experiment")``` to match your local configuration.
-
+• OSX or Linux, WSL
 
 • Run the R script (select all and then command-enter in RStudio for MacOS)
 
 • The generated graph will be in `experiment/plots`
+csv output for each run is also output.
 
+•  A summary of the results is presented in the R log
 
 Folder structure after completion
 ```
@@ -66,7 +69,7 @@ R_tools/
 │   └── plots
 │       └── output.png
 ├── plot_browsertime_visual_metrics.R
-├── to_csv_headers.sh
+├── to_csv_no_visual_metrics.sh
 └── to_csv_visual_metrics.sh
 ```
 
